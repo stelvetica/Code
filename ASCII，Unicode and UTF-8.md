@@ -14,5 +14,22 @@
 1.  第二个问题是，我们已经知道，英文字母只用一个字节表示就够了，
 如果Unicode统一规定，每个符号用三个或四个字节表示，那么每个英文
 字母前都必然有二到三个字节是0，这对于存储来说是极大的浪费，文本文件的大小会因此大出二三倍，这是无法接受的。
-#UTF-8
+# UTF-8
+UTF-8是Unicode的实现方式之一
+## 编码规则
+1. 单字节符号第一位为0，后面7位为Unicode码
+1. n字节符号，第一个符号前n位为1，n+1位为0,后面字节前两位设为10，不是标志位的二进制位全部为这个符号的Unicode码，
+这样只要读第一个符号就可以知道一共有多少字节
+## Unicode与UTF-8的转换
+txt文件另存为就可以使用
+1. ANSI是默认的编码方式。对于英文文件是ASCII编码，对于简体中文文件是GB2312编码（只针对Windows简体中文版，如果是繁体中文版会采用Big5码）。
+1. Unicode编码指的是UCS-2编码方式，即直接用两个字节存入字符的Unicode码。这个选项用的little endian格式。
+1. Unicode big endian编码与上一个选项相对应。我在下一节会解释little endian和big endian的涵义。
+1. UTF-8编码，也就是上一节谈到的编码方法。
+#little endian and big endian
+Unicode 第一个字节在前还是在后
+在前就是big endian
+在后就是little endian
+
+
 
